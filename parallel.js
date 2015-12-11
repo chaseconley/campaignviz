@@ -4,11 +4,12 @@ d3.json("employment.json", function(error, data) {
 
 var outputData = [];
 
-var margin = {top: 50, right: 50, bottom: 150, left: 1000},
-    width = screen.width - margin.left - margin.right,
-    height = screen.height - margin.top - margin.bottom;
+var margin =  {top: 0, right: 0, bottom: 0, left: 0},
+    /*{top: 50, right: 50, bottom: 150, left: 100},*/
+    width = 500 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
 
-var pc = d3.parcoords()("#example")
+var pc = d3.parcoords()("#graph2")
   .data(data)
   .color(function(d){
       if (d.party == 'R') return 'brown';
@@ -17,17 +18,19 @@ var pc = d3.parcoords()("#example")
       else return 'white';//rgba('0,0,0,0');
   })
   .hideAxis(["cand_name", "party"]) //hides axis for candname, but it stays in dataset
-  .margin({top:80,left:100,bottom:50, right:0})
+  .margin({top:80,left:0,bottom:50, right:0})
   .render()
   .ticks(3)
   //.createAxes()
   .brushMode("1D-axes")
-  .reorderable()
-  .interactive();
+  .reorderable();
+  //.interactive();
 
 //add hover event
-d3.select("#example")
+d3.select("#graph2")
 	.on("mousemove", function() {
+
+            console.log("on mousemove");
 	    var mousePosition = d3.mouse(this);			    
 	    highlightLineOnClick(mousePosition, true); //true will also add tooltip
 	})
@@ -112,7 +115,7 @@ function addTooltip(clicked, clickedCenPts){
         var added_name = false;
     	for (var j=0; j<clickedCenPts[i].length; j++){  //Uncomment to have multiple axes with tooltips
                 if (!added_name){
-                    clickedDataSet.push([20, clickedCenPts[i][j][1] - margins.top, d3.values(clicked[i])[0] ]);
+                    clickedDataSet.push([clickedCenPts[i][1][0] - margins.left, 50, d3.values(clicked[i])[0] ]);
                     added_name = true;
                 }
     		var text = d3.format(",.1%")(d3.values(clicked[i])[j+1]/100);
@@ -204,4 +207,16 @@ function highlightLineOnClick(mouseClick, drawTooltip){
 };
 
 });
+
+
+var gs2 = graphScroll()
+  .container(d3.select("#container2"))
+  .graph(d3.selectAll("#graph2"))
+  .sections(d3.selectAll("#sections2 > div"))
+  .on("active", function(i){
+
+  });
+
+
+
 })()
