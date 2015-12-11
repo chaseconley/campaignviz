@@ -1,0 +1,170 @@
+ [
+  {
+    "cand_name":"Average",
+    "Percent Employed":"64.1524631",
+    "Percent Unemployed":"7.9180524",
+    "Percent Retired":"27.9294845",
+    "party":"both"
+  },
+  {
+    "cand_name":"Ben Carson",
+    "Percent Employed":"49.5147742",
+    "Percent Unemployed":".5926006",
+    "Percent Retired":"49.8926251",
+    "party":"R"
+  },
+  {
+    "cand_name":"Bernie Sanders",
+    "Percent Employed":"53.6570942",
+    "Percent Unemployed":"38.1373412",
+    "Percent Retired":"8.2055646",
+    "party":"D"
+  },
+  {
+    "cand_name":"Bobby Jindal",
+    "Percent Employed":"86.5384615",
+    "Percent Unemployed":".1748252",
+    "Percent Retired":"13.2867133",
+    "party":"R"
+  },
+  {
+    "cand_name":"Carly Fiorina",
+    "Percent Employed":"61.1156418",
+    "Percent Unemployed":".383298",
+    "Percent Retired":"38.5010602",
+    "party":"R"
+  },
+  {
+    "cand_name":"Chris Christie",
+    "Percent Employed":"89.9659864",
+    "Percent Unemployed":"2.8061224",
+    "Percent Retired":"7.2278912",
+    "party":"R"
+  },
+  {
+    "cand_name":"Donald Trump",
+    "Percent Employed":"72.8502837",
+    "Percent Unemployed":".5237887",
+    "Percent Retired":"26.6259275",
+    "party":"R"
+  },
+  {
+    "cand_name":"George Pataki",
+    "Percent Employed":"94.7826087",
+    "Percent Unemployed":"0",
+    "Percent Retired":"5.2173913",
+    "party":"R"
+  },
+  {
+    "cand_name":"Hillary Clinton",
+    "Percent Employed":"77.8624143",
+    "Percent Unemployed":"2.534349",
+    "Percent Retired":"19.6032368",
+    "party":"D"
+  },
+  {
+    "cand_name":"Jeb Bush",
+    "Percent Employed":"80.6986179",
+    "Percent Unemployed":"00.3163034",
+    "Percent Retired":"18.9850787",
+    "party":"R"
+  },
+  {
+    "cand_name":"Jim Webb",
+    "Percent Employed":"61.1030479",
+    "Percent Unemployed":"10.8853411",
+    "Percent Retired":"28.011611",
+    "party":"D"
+  },
+  {
+    "cand_name":"John Kasich",
+    "Percent Employed":"78.8335265",
+    "Percent Unemployed":"0",
+    "Percent Retired":"21.1664735",
+    "party":"R"
+  },
+  {
+    "cand_name":"Lawrence Lessig",
+    "Percent Employed":"85.1381628",
+    "Percent Unemployed":"2.0911128",
+    "Percent Retired":"12.7707244",
+    "party":"D"
+  },
+  {
+    "cand_name":"Lindsey Graham",
+    "Percent Employed":"73.9258773",
+    "Percent Unemployed":"00.2951787",
+    "Percent Retired":"25.7789439",
+    "party":"R"
+  },
+  {
+    "cand_name":"Marco Rubio",
+    "Percent Employed":"65.4257246",
+    "Percent Unemployed":"00.2309783",
+    "Percent Retired":"34.3432971",
+    "party":"R"
+  },
+  {
+    "cand_name":"Martin O'Malley",
+    "Percent Employed":"88.1765835",
+    "Percent Unemployed":"02.6103647",
+    "Percent Retired":"09.2130518",
+    "party":"D"
+  },
+  {
+    "cand_name":"Mike Huckabee",
+    "Percent Employed":"72.1317683",
+    "Percent Unemployed":"00.9087467",
+    "Percent Retired":"26.959485",
+    "party":"R"
+  },
+  {
+    "cand_name":"Rand Paul",
+    "Percent Employed":"71.6468267",
+    "Percent Unemployed":"02.3426061",
+    "Percent Retired":"26.0105672",
+    "party":"R"
+  },
+  {
+    "cand_name":"Rick Perry",
+    "Percent Employed":"85.1321586",
+    "Percent Unemployed":"0",
+    "Percent Retired":"14.8678414",
+    "party":"R"
+  },
+  {
+    "cand_name":"Rick Santorum",
+    "Percent Employed":"79.1044776",
+    "Percent Unemployed":"00.8706468",
+    "Percent Retired":"20.0248756",
+    "party":"R"
+  },
+  {
+    "cand_name":"Scott Walker",
+    "Percent Employed":"69.6549206",
+    "Percent Unemployed":"00.109549",
+    "Percent Retired":"30.2355304",
+    "party":"R"
+  },
+  {
+    "cand_name":"Ted Cruz",
+    "Percent Employed":"63.5708259",
+    "Percent Unemployed":"00.9681287",
+    "Percent Retired":"35.4610454",
+    "party":"R"
+  },
+  {
+    "cand_name":"",
+    "Percent Employed":"100",
+    "Percent Unemployed":"100",
+    "Percent Retired":"100",
+    "party":""
+  },
+  {
+    "cand_name":"",
+    "Percent Employed":"0",
+    "Percent Unemployed":"0",
+    "Percent Retired":"0",
+    "party":""
+   }
+]
