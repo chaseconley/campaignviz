@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+  
+  
+  
+  
+  
+  TODO:
+  - Better Way to Do Tooltip Switching
+  -Change axis label with transitions
+  
+  
+  
+  
+  
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>Campaign Finance</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <h1>Campaign Finance</h1>
+
+
+  <h3>A Visualization of Campaign Contributions for the 2016 Presidential Election</h3>
+
+
+  <div id='container'>
+    <div id='sections'>
+      <div>
+        <h3>Donation Inequality</h3>
+        Just as massive amounts of money are poured into presidential campaigns, massive amounts of money are poured into Hillary Clinton's campaign
+      </div>
+
+
+      <div>
+        In fact, Clinton's campaign received more money from individual donors through the end of September 2015 than the bottom 16 candidates ...
+      </div>
+
+
+      <div>
+        ...combined.
+      </div>
+
+
+      <div>
+        Even when you add in other contributions
+      </div>
+
+
+      <div>
+        like the candidates' own money<br>
+        (mostly from Donald Trump)
+      </div>
+
+
+      <div>
+        and money from PACs<br>
+        <a href="javascript:void(0)" onclick="if(document.getElementById('spoiler') .style.display=='none'){document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}" style="font-size: 9px; color: grey;">Why are these numbers so small?</a>
+
+        <div id="spoiler" style="display:none; font-size: 9px;">
+          <br>
+          These PACs aren't the same a Super PACs. Super PACs do spend large amounts of money on elections, but cannot give directly to candidates. Regular PACs, shown here, have donation restrictions because they can give directly to candidates
+        </div>
+      </div>
+
+
+      <div>
+        Clinton <i>still</i> has significantly more than all other candidates.<br>
+        <br>
+        But where does this disparity come from?
+      </div>
+
+
+      <div>
+        <h3>A Party Divided</h3>
+        
+      </div>
+      <div>
+        stuff
+      </div>
+    </div>
+
+
+    <div id='graph'>
+    </div>
+  </div>
+
+
+  <h1>Multiple graphs</h1>
+
+
+  <div id='container2'>
+    <div id='sections2'>
+      <div>
+        <h3>Scroll away</h3>
+        As the bottom of the container approaches the top of the page, the graph is classed with <span class='mono'>graph-scroll-below</span>. A little more css allows the graph slide out of view gracefully:
+
+        <pre>
+  #graph.graph-scroll-below{
+    position: absolute;
+    bottom: 0px;
+    margin-left: 240px;
+  }
+</pre>
+      </div>
+
+
+      <div>
+        <h3>Examples</h3>
+
+
+        <p><a href='http://www.bloomberg.com/graphics/2015-auto-sales/'>Auto Sales</a>
+        </p>
+
+
+        <p><a href='http://www.bloomberg.com/graphics/2015-measles-outbreaks/'>Measles</a>
+        </p>
+
+
+        <p><a href='www.msnbc.com/interactives/geography-of-poverty/se.html'>Geography of Poverty (slideshows and charts)</a>
+        </p>
+
+
+        <p><a href='http://roadtolarissa.com/blog/2015/01/04/coloring-maps-with-d3/'>Coloring Maps</a>
+        </p>
+      </div>
+
+
+      <div>
+        <h3>More reading</h3>
+
+
+        <p><a href='http://bost.ocks.org/mike/scroll/'>How To Scroll</a>
+        </p>
+
+
+        <p><a href='https://source.opennews.org/en-US/articles/behind-scenes-fewer-helmets-more-deaths/'>Making “Fewer Helmets, More Deaths”</a>
+        </p>
+      </div>
+
+
+      <div>
+        <h3>Todos</h3>
+
+
+        <p>- Simple examples</p>
+
+
+        <p>- Self explanatory graphics</p>
+
+
+        <p>- Expose scroll-to functionality</p>
+      </div>
+    </div>
+
+
+    <div id='graph2'>
+    </div>
+  </div>
+
+
+  <h3 id='source'><a href='https://github.com/1wheel/graph-scroll'>contribute/view on github</a>
+  </h3>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> 
+  <script src="graph-scroll.js"></script> 
+  <script src="d3.tip.v0.6.3.js"></script> 
+  <script src="barchart.js"></script>
+</body>
+</html>

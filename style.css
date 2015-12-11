@@ -1,0 +1,145 @@
+/*********************/
+/* Bar Graph Styling */
+/*********************/
+
+.bar {
+  fill: #4682b4;
+}
+
+.bar:hover {
+  fill: #a52a2a;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.bar-chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+/*******************/
+/* Tooltip Styling */
+/*******************/
+
+.d3-tip {
+  line-height: 1;
+  font-weight: 700;
+  padding: 12px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  border-radius: 2px;
+  font-size: 10px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0,0,0,0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0;
+  top: 100%;
+  left: 0;
+}
+
+/****************/
+/* Body Styling */
+/****************/
+
+body {
+  width: 900px;
+  margin: 0 auto;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h1 {
+  margin: 50px;
+}
+
+h1,h3 {
+  text-align: center;
+}
+
+circle {
+  fill: #4682b4;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+/****************/
+/* Layout Magic */
+/****************/
+
+#container,#container2 {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+}
+
+#sections,#sections2 {
+  width: 340px;
+  float: left;
+}
+
+#sections > div,#sections2 > div {
+  background: #fff;
+  opacity: .2;
+  margin-bottom: 500px;
+  margin-top: 120px;
+}
+
+#sections > div.graph-scroll-active,#sections2 > div.graph-scroll-active {
+  opacity: 1;
+}
+
+#graph,#graph2 {
+  float: left;
+  margin-left: 40px;
+}
+
+#graph.graph-scroll-fixed,#graph2.graph-scroll-fixed {
+  position: fixed;
+  top: 0;
+  margin-left: 380px;
+}
+
+#graph.graph-scroll-below,#graph2.graph-scroll-below {
+  position: absolute;
+  bottom: 0;
+  margin-left: 380px;
+}
+
+
