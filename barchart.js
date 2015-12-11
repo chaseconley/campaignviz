@@ -161,13 +161,13 @@
   });
   
   // Chart Transitions
-  
+  previous = 0;
   var gs = graphScroll()
     .container(d3.select('#container'))
     .graph(d3.selectAll('#graph'))
     .sections(d3.selectAll('#sections > div'))
     .on('active', function(i){
-      console.log(i);
+      
       switch(i){
         case 0: {
           console.log("At 0");
@@ -178,6 +178,7 @@
           .duration(500)
           .attr("transform", "translate(0,0)")
           .style("fill-opacity", 0.75);
+          previous = 0;
         };
         break;
         case 1: {
@@ -195,6 +196,7 @@
               return 0.3;
             }
             });
+          previous = 1;
         };
         break;
         case 2: {
@@ -213,6 +215,7 @@
               return "translate(0,0)";
             }
           });
+          previous = 2;
         };     
         break;     
         case 3: {
@@ -245,6 +248,7 @@
             .text("Total Individual Contributions")
           
           tooltipData = 0;
+          previous = 3;
         };
         break;
         case 4: {
@@ -283,6 +287,7 @@
             .text("Total Individual & Candidate Contributions")
           
           tooltipData = 1;
+          previous = 4;
         };
         break;
         case 5: {
@@ -325,10 +330,23 @@
             .text("Total Contributions")
           
           tooltipData = 2;
+          previous = 5;
         };
         break;
         
         case 6: {
+          y.domain([0, d3.max(candidate_data, function(d){return d.individual_total;})]);
+          d3.select(".y").call(yAxis);
+          console.log(previous);
+          
+          d3.select(".bar-chart")
+            .selectAll('.bar')
+            .transition()
+            .duration(1)
+            .delay(2000)
+            .attr("y", function(d) { return y(d.total_contributions); })
+            .attr("height", function(d) { return height - y(d.total_contributions); })
+          
           console.log("At 6");
           d3.select(".bar-chart")
             .selectAll(".bar")
@@ -365,7 +383,10 @@
             .delay(2000)
             .style("visibility", "hidden");
             
+
+            
           tooltipData = 3;
+          previous = 6;
   
         };
         break;
@@ -375,39 +396,44 @@
           y.domain([0, d3.max(party_data, function(d){return d.total;})]);
           d3.select(".y").transition().duration(1000).ease("bounce").call(yAxis);
           
-          d3.selectAll(".bar")
+          if (previous < 7){
+            d3.selectAll(".bar")
+              .transition()
+              .ease("bounce")
+              .duration(1000)
+              .attr("y", function(d) { return y(d.total_contributions); })
+              .attr("height", function(d) { return height - y(d.total_contributions); })
+            previous = 7;
+          }else {
+            d3.selectAll(".bar")
             .transition()
-            .ease("bounce")
-            .duration(1000)
-            .attr("y", function(d) { return y(d.total_contributions); })
-            .attr("height", function(d) { return height - y(d.total_contributions); })
-          
+            .duration(2000)
+            .attr("transform","translate(0,0)");
+          }
         };
         break;
         
         case 8: {
           console.log("At 8");
-         var dRunningTotal = -(height - y(76045487));
-         var rRunningTotal = -(height - y(31275992));
+          var dRunningTotal = -(height - y(76045487));
+          var rRunningTotal = -(height - y(31275992));
           d3.selectAll(".bar")
             .transition()
             .duration(2000)
             .attr("transform", function(d){ 
               if (d.party == "D" && d.cand_nm != "Hillary Clinton"){
-  
                 transform = dRunningTotal;
-                                console.log(d.cand_nm + transform);
                 dRunningTotal -=  (height - y(d.total_contributions));
                 return "translate(" + (x("Hillary Clinton")-x(d.cand_nm)) + "," + transform +")";
               }else if (d.party == "R" && d.cand_nm != "Ben Carson"){
                 transform = rRunningTotal;
-                console.log(d.cand_nm + transform);
                 rRunningTotal -=  (height - y(d.total_contributions));
                 return "translate(" + (x("Ben Carson")-x(d.cand_nm)) + "," + transform +")";
               } else{
                 return "translate(0,0)";
               }
             });
+            previous = 8;
         };
         break;
   
