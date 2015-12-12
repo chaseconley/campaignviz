@@ -520,6 +520,7 @@ function flipAxisAndUpdatePCP(dimension, i) {
 }
 
 function rotateLabels() {
+/*
   var delta = d3.event.deltaY;
   delta = delta < 0 ? -5 : delta;
   delta = delta > 0 ? 5 : delta;
@@ -527,6 +528,7 @@ function rotateLabels() {
   __.dimensionTitleRotation += delta;
   pc.svg.selectAll("text.label")
     .attr("transform", "translate(0,-5) rotate(" + __.dimensionTitleRotation + ")");
+*/
   d3.event.preventDefault();
 }
 
