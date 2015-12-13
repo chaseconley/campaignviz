@@ -40,13 +40,23 @@
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
+      
+      switch(tooltipData){
+        case 0:
+        case 1:
+        case 2:
+        case 3: nameToShow = d.cand_nm; break;
+        case 4: nameToShow = d.party; break;
+      }
+      
       switch(tooltipData){
         case 0: valueToShow = d.individual_total; break;
         case 1: valueToShow = d.cand_total; break;
         case 2: valueToShow = d.pac_total; break;
         case 3: valueToShow = d.total_contributions; break;
+        case 4: valueToShow = d.total; break;
       }
-      return "<strong>" + d.cand_nm +":<\/strong> <span>$" + commasFormatter(valueToShow) + "<\/span>";
+      return "<strong>" + nameToShow +":<\/strong> <span>$" + commasFormatter(valueToShow) + "<\/span>";
     })
   
   // Add the SVG to the page
@@ -75,10 +85,10 @@
     
     party_data = [];
     
-    var temp = {party: "R", total: data.filter(function(d){return d.party=="R"}).reduce(function(a, b) {return parseInt(a,10) + parseInt(b.total_contributions, 10);}, 0)};
+    var temp = {party: "Republicans", total: data.filter(function(d){return d.party=="R"}).reduce(function(a, b) {return parseInt(a,10) + parseInt(b.total_contributions, 10);}, 0)};
     party_data.push(temp);   
       
-    var temp = {party: "D", total: data.filter(function(d){return d.party=="D"}).reduce(function(a, b) {return parseInt(a,10) + parseInt(b.total_contributions, 10);}, 0)};
+    var temp = {party: "Democrats", total: data.filter(function(d){return d.party=="D"}).reduce(function(a, b) {return parseInt(a,10) + parseInt(b.total_contributions, 10);}, 0)};
     party_data.push(temp);
     
     // Make Graph
@@ -91,7 +101,8 @@
        .attr("class", "x axis")
        .attr("transform", "translate(0," + height + ")")
        .call(xAxis)
-       .selectAll("text")  
+       .selectAll("text")
+       .attr("class", "x-labels")  
        .style("text-anchor", "end")
        .attr("dx", "-.8em")
        .attr("dy", ".15em")
@@ -148,6 +159,20 @@
        .style("fill-opacity", 0/* function(d){return barOpacity(d.individual_total)} */)
        .on('mouseover', tip.show)
        .on('mouseout', tip.hide);
+       
+    svg.selectAll(".party-bar")
+       .data(party_data)
+       .enter().append("rect")
+       .attr("class", "party-bar")
+       .attr("x", function(d) { return x(d.party); })
+       .attr("width", x.rangeBand())
+       .attr("y", function(d) { return y(d.total);})
+       .attr("height", function(d) { return height - y(d.total); })
+       .style('visibility', 'hidden')
+       .style("fill", function(d){return barColors(d.party)})
+       .style("fill-opacity", 0/* function(d){return barOpacity(d.individual_total)} */)
+       .on('mouseover', tip.show)
+       .on('mouseout', tip.hide);
         
     svg.append("text")
        .attr("class", "encouragement")
@@ -158,7 +183,7 @@
        .text("Hover to Interact")
        
         
-  });
+
   
   // Chart Transitions
   previous = 0;
@@ -171,13 +196,16 @@
       switch(i){
         case 0: {
           console.log("At 0");
+          
           var runningTotal = -(height - y(13557574));
+          
           d3.select(".bar-chart")
           .selectAll(".bar")
           .transition()
           .duration(500)
           .attr("transform", "translate(0,0)")
           .style("fill-opacity", 0.75);
+          
           previous = 0;
         };
         break;
@@ -205,7 +233,7 @@
           d3.select(".bar-chart")
           .selectAll(".bar")
           .transition()
-          .duration(2000)
+          .duration(1500)
           .attr("transform", function(d){ 
             if (x(d.cand_nm)<x("Marco Rubio")){
               transform = runningTotal;
@@ -224,22 +252,22 @@
           d3.select(".bar-chart")
           .selectAll(".bar")
           .transition()
-          .duration(2000)
+          .duration(1500)
           .attr("transform", "translate(0,0)")
           .style("fill-opacity", 0.75);
           
           d3.select(".bar-chart")
             .selectAll(".cand-bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .attr("transform", "translate(0,0)")
             .style("fill-opacity", 0);
           
           d3.select(".bar-chart")
             .selectAll(".cand-bar")
             .transition()
-            .duration(2000)
-            .delay(2000)
+            .duration(1500)
+            .delay(1500)
             .attr("transform", "translate(0,0)")
             .style("visilibility", "hidden");
           
@@ -256,34 +284,34 @@
           d3.select(".bar-chart")
             .selectAll(".cand-bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("visibility", "visible")
             .style("fill-opacity", 0.75);
           
           d3.select(".bar-chart")
             .selectAll(".bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("fill-opacity", 0.3);
             
           d3.select(".bar-chart")
             .selectAll(".pac-bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("visibility", "visible")
             .style("fill-opacity", 0);
           
           d3.select(".bar-chart")
             .selectAll(".pac-bar")
             .transition()
-            .duration(2000)
-            .delay(2000)
+            .duration(1500)
+            .delay(1500)
             .attr("transform", "translate(0,0)")
             .style("visilibility", "hidden");
           
           d3.select(".y-axis-label")
             .transition()
-            .delay(2000)
+            .delay(1500)
             .text("Total Individual & Candidate Contributions")
           
           tooltipData = 1;
@@ -295,20 +323,20 @@
           d3.select(".bar-chart")
             .selectAll(".pac-bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("visibility", "visible")
             .style("fill-opacity", 0.75);
           
           d3.select(".bar-chart")
             .selectAll(".cand-bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("fill-opacity", 0.3);
           
           d3.select(".bar-chart")
             .selectAll(".bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("fill-opacity", 0.3);
             
           d3.select(".bar-chart")
@@ -326,7 +354,7 @@
           
           d3.select(".y-axis-label")
             .transition()
-            .delay(2000)
+            .delay(1500)
             .text("Total Contributions")
           
           tooltipData = 2;
@@ -335,37 +363,29 @@
         break;
         
         case 6: {
+          console.log("At 6");
+          
           y.domain([0, d3.max(candidate_data, function(d){return d.individual_total;})]);
           d3.select(".y").call(yAxis);
-          console.log(previous);
-          
-          d3.select(".bar-chart")
-            .selectAll('.bar')
-            .transition()
-            .duration(1)
-            .delay(2000)
-            .attr("y", function(d) { return y(d.total_contributions); })
-            .attr("height", function(d) { return height - y(d.total_contributions); })
-          
-          console.log("At 6");
+        
           d3.select(".bar-chart")
             .selectAll(".bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("visibility", "visible")
             .style("fill-opacity", 0.75);
           
           d3.select(".bar-chart")
             .selectAll(".cand-bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .style("fill-opacity", 0.75);
             
           d3.select(".bar-chart")
             .selectAll('.bar')
             .transition()
             .duration(1)
-            .delay(2000)
+            .delay(1500)
             .attr("y", function(d) { return y(d.total_contributions); })
             .attr("height", function(d) { return height - y(d.total_contributions); })
             
@@ -373,14 +393,14 @@
             .selectAll(".cand-bar")
             .transition()
             .duration(0)
-            .delay(2000)
+            .delay(1500)
             .style("visibility", "hidden");
           
           d3.select(".bar-chart")
             .selectAll(".pac-bar")
             .transition()
             .duration(0)
-            .delay(2000)
+            .delay(1500)
             .style("visibility", "hidden");
             
 
@@ -393,21 +413,21 @@
         
         case 7: {
           console.log("At 7");
-          y.domain([0, d3.max(party_data, function(d){return d.total;})]);
+          y.domain([0, d3.max(candidate_data, function(d){return d.individual_total;})]);
           d3.select(".y").transition().duration(1000).ease("bounce").call(yAxis);
           
-          if (previous < 7){
+          if (previous > 7){
             d3.selectAll(".bar")
               .transition()
               .ease("bounce")
               .duration(1000)
               .attr("y", function(d) { return y(d.total_contributions); })
-              .attr("height", function(d) { return height - y(d.total_contributions); })
+              .attr("height", function(d) { return height - y(d.total_contributions); });
             previous = 7;
           }else {
             d3.selectAll(".bar")
             .transition()
-            .duration(2000)
+            .duration(1500)
             .attr("transform","translate(0,0)");
           }
         };
@@ -415,33 +435,127 @@
         
         case 8: {
           console.log("At 8");
-          var dRunningTotal = -(height - y(76045487));
-          var rRunningTotal = -(height - y(31275992));
+          y.domain([0, d3.max(party_data, function(d){return d.total;})]);
+          d3.select(".y").transition().duration(1000).ease("bounce").call(yAxis);
+          
+          if (previous < 8){
+            d3.selectAll(".bar")
+              .transition()
+              .ease("bounce")
+              .duration(1000)
+              .attr("y", function(d) { return y(d.total_contributions); })
+              .attr("height", function(d) { return height - y(d.total_contributions); });
+            previous = 8;
+          }else {
+            d3.selectAll(".bar")
+            .transition()
+            .duration(1500)
+            .attr("transform","translate(0,0)");
+          }
+        };
+        break;
+        
+        case 9: {
+          console.log("At 9");
+          
+          // Forward
+          if (previous < 9){
+            var dRunningTotal = -(height - y(76045487));
+            var rRunningTotal = -(height - y(31275992));
+            
+            d3.selectAll(".bar")
+              .transition()
+              .duration(1500)
+              .attr("transform", function(d){ 
+                if (d.party == "D" && d.cand_nm != "Hillary Clinton"){
+                  transform = dRunningTotal;
+                  dRunningTotal -=  (height - y(d.total_contributions));
+                  return "translate(" + (x("Hillary Clinton")-x(d.cand_nm)) + "," + transform +")";
+                }else if (d.party == "R" && d.cand_nm != "Ben Carson"){
+                  transform = rRunningTotal;
+                  rRunningTotal -=  (height - y(d.total_contributions));
+                  return "translate(" + (x("Ben Carson")-x(d.cand_nm)) + "," + transform +")";
+                } else{
+                  return "translate(0,0)";
+                }
+              });
+          }
+          //Reverse
+          if (previous > 9){
+            x.domain(candidate_data.map(function(d) { return d.cand_nm; }));
+            d3.select(".x").transition().duration(2000).call(xAxis)
+              .selectAll("text")
+              .attr("class", "x-labels")  
+              .style("text-anchor", "end")
+              .attr("dx", "-.8em")
+              .attr("dy", ".15em")
+              .attr("transform", "rotate(-65)");;
+  
+            d3.selectAll(".bar")
+              .transition()
+              .duration(1)
+              .delay(2000)
+              .style("visibility", "visible");
+              
+
+  
+            x.domain(candidate_data.map(function(d) { return d.cand_nm; })); 
+          
+            d3.selectAll(".party-bar")
+              .transition()
+              .duration(2000)
+              .attr("x", function(d){ if(d.party == "Democrats") {return x("Hillary Clinton");} else { return x("Ben Carson");} })
+              .attr("width", x.rangeBand());
+            
+                        d3.selectAll(".party-bar")
+              .transition()
+              .duration(0)
+              .delay(2000)
+              .style("visibility", "hidden")
+            
+            tooltipData = 3;
+
+          }
+          
+          previous = 9;
+        };
+        break;
+        
+        case 10: {
+          console.log("At 10");
+          d3.selectAll(".party-bar")
+            .style("visibility","visible")
+            .style("fill-opacity", 0.75)
+            .attr("y", function(d) { return y(d.total);})
+            .attr("height", function(d) { return height - y(d.total); })
+            .attr("x", function(d) { if(d.party == "Democrats") {return x("Hillary Clinton");} else { return x("Ben Carson");}});
+            
           d3.selectAll(".bar")
+            .style("visibility", "hidden");
+           
+          x.domain(party_data.map(function(d) { return d.party; })); 
+          
+          d3.selectAll(".party-bar")
             .transition()
             .duration(2000)
-            .attr("transform", function(d){ 
-              if (d.party == "D" && d.cand_nm != "Hillary Clinton"){
-                transform = dRunningTotal;
-                dRunningTotal -=  (height - y(d.total_contributions));
-                return "translate(" + (x("Hillary Clinton")-x(d.cand_nm)) + "," + transform +")";
-              }else if (d.party == "R" && d.cand_nm != "Ben Carson"){
-                transform = rRunningTotal;
-                rRunningTotal -=  (height - y(d.total_contributions));
-                return "translate(" + (x("Ben Carson")-x(d.cand_nm)) + "," + transform +")";
-              } else{
-                return "translate(0,0)";
-              }
-            });
-            previous = 8;
+            .attr("x", function(d){ return x(d.party); })
+            .attr("width", x.rangeBand());
+            
+          d3.select(".x").transition().duration(2000).call(xAxis);
+          
+          tooltipData = 4;
+          
+          previous = 10;
         };
         break;
   
   
   
   
+  
       }        
     })
+      });
   
   d3.select('#source')
     .style({'margin-bottom': window.innerHeight - 500 + 'px', padding: '100px'})
