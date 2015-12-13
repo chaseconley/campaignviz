@@ -164,18 +164,18 @@ function getClickedLines(mouseClick){
     var activeData = getActiveData();
 
     // find centriod points
-    var pcCentPts = getCentroids(activeData);
+    var graphCentPts = getCentroids(activeData);
 
-    if (pcCentPts.length==0) return false;
+    if (graphCentPts.length==0) return false;
 
     // find between which axes the point is
-    var axeNum = findAxes(mouseClick, pcCentPts[0]);
+    var axeNum = findAxes(mouseClick, graphCentPts[0]);
     if (!axeNum) return false;
     
-    pcCentPts.forEach(function(d, i){
+    graphCentPts.forEach(function(d, i){
        if (isOnLine(d[axeNum-1], d[axeNum], mouseClick, 2)){
        	   clicked.push(activeData[i]);
-	   clickedCenPts.push(pcCentPts[i]); // for tooltip
+	   clickedCenPts.push(graphCentPts[i]); // for tooltip
         }
     });
 	
@@ -196,7 +196,9 @@ function highlightLineOnClick(mouseClick, drawTooltip){
 
         // highlight clicked line
         pc.highlight(clicked);
-		
+        console.log("Clicked ", clicked);	
+
+	
 	if (drawTooltip){
     	    // clean if anything is there
 	    cleanTooltip();
@@ -206,7 +208,6 @@ function highlightLineOnClick(mouseClick, drawTooltip){
     }
 };
 
-});
 
 
 var gs2 = graphScroll()
@@ -218,5 +219,59 @@ var gs2 = graphScroll()
   });
 
 
+// Transitions
+previous = 0;
+var gs = graphScroll()
+    .container(d3.select('#container2'))
+    .graph(d3.selectAll('#graph2'))
+    .sections(d3.selectAll('#sections > div'))
+    .on('active', function(i){
+     
+      var highlight = data.filter(function(d){return d.cand_name!=""});
+      var prev = -1;
+ 
+      switch(i){
+        case 0: {
+	  cleanTooltip();
+          pc.unhighlight();
+        };
+        break;
+        case 1: {
+          highlight = data.filter(function(highlight){return highlight.cand_name=="Average"});
+          pc.highlight(highlight);
+          var centPtsForTTip = getCentroids(highlight);
+	  addTooltip(highlight, centPtsForTTip);
+          prev = 1;
+        };
+        break;
+        case 2: {
+          pc.unhighlight();
+          cleanTooltip();
+          highlight = data.filter(function(highlight){return highlight.party=="R"});
+          pc.highlight(highlight).delay(500);
+          prev = 2;
+        };
+        break;
+        case 3: {
+          if (prev == 4) cleanTooltip();
+          highlight = data.filter(function(highlight){return highlight.party=="D"});
+          pc.highlight(highlight);
+          prev = 3;
+        };
+        break;
+        case 4: {
+          highlight = data.filter(function(highlight){return highlight.cand_name=="Bernie Sanders"});
+          pc.highlight(highlight);
+          var centPtsForTTip = getCentroids(highlight);
+	  addTooltip(highlight, centPtsForTTip);
+        };
+        break;
+        case 5: {
+          pc.unhighlight();
+          cleanTooltip();
+        };
+      }
+    });
 
+});
 })()
