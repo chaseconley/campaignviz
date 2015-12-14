@@ -1,5 +1,5 @@
 (function(){
-d3.json("employment.json", function(error, data) {
+d3.json("contribution_size.json", function(error, data) {
 
 
 var margin =  {top: 0, right: 0, bottom: 0, left: 0},
@@ -7,7 +7,7 @@ var margin =  {top: 0, right: 0, bottom: 0, left: 0},
     width = 500 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
-var pc = d3.parcoords()("#graph2")
+var pc2 = d3.parcoords()("#graph3")
   .data(data)
   .color(function(d){
       if (d.party == 'R') return 'brown';
@@ -18,14 +18,14 @@ var pc = d3.parcoords()("#graph2")
   .hideAxis(["cand_name", "party"]) //hides axis for candname, but it stays in dataset
   .margin({top:80,left:0,bottom:50, right:0})
   .render()
-  .ticks(3)
-  //.createAxes()
+  .ticks(5)
+  .createAxes()
   .brushMode("1D-axes")
   .reorderable();
   //.interactive();
-console.log("data ", data);
+
 //add hover event
-d3.select("#graph2")
+d3.select("#graph3")
 	.on("mousemove", function() {
 
             console.log("on mousemove");
@@ -34,7 +34,7 @@ d3.select("#graph2")
 	})
 	.on("mouseout", function(){
 		cleanTooltip();
-		pc.unhighlight();
+		pc2.unhighlight();
 	});
 
 d3.selectAll(".label").attr("transform", "translate(0,-25)");
@@ -46,11 +46,11 @@ function getCentroids(data){
 	// for parallelcoordinates and make compute_centroids public.
 	// I assume this should be already somewhere in graph and I don't need to recalculate it
 	// but I couldn't find it so I just wrote this for now
-	var margins = pc.margin();
+	var margins = pc2.margin();
 	var graphCentPts = [];
 	
 	data.forEach(function(d){
-		var initCenPts = pc.compute_centroids(d).filter(function(d, i){return i%2==0;});	
+		var initCenPts = pc2.compute_centroids(d).filter(function(d, i){return i%2==0;});	
 		// move points based on margins
 		var cenPts = initCenPts.map(function(d){
 			return [d[0] + margins["left"], d[1]+ margins["top"]]; 
@@ -62,8 +62,8 @@ function getCentroids(data){
 
 
 function getActiveData(){
-	if (pc.brushed()!=false) return pc.brushed();
-	return pc.data();
+	if (pc2.brushed()!=false) return pc2.brushed();
+	return pc2.data();
 }
 function isOnLine(startPt, endPt, testPt, tol){
 	// check if test point is close enough to a line
@@ -98,14 +98,14 @@ function findAxes(testPt, cenPts){
 
 function cleanTooltip(){
 	// removes any object under #tooltip is
-	pc.svg.selectAll("#tooltip")
+	pc2.svg.selectAll("#tooltip")
     	.remove();
 }
 
 function addTooltip(clicked, clickedCenPts){
     // sdd tooltip to multiple clicked lines
     var clickedDataSet = [];
-    var margins = pc.margin()
+    var margins = pc2.margin()
     var text = "";
 
     // get all the values into a single list
@@ -113,10 +113,10 @@ function addTooltip(clicked, clickedCenPts){
         var added_name = false;
     	for (var j=0; j<clickedCenPts[i].length; j++){  //Uncomment to have multiple axes with tooltips
                 if (!added_name){
-                    clickedDataSet.push([clickedCenPts[i][1][0] - margins.left, 50, d3.values(clicked[i])[0] ]);
+                    clickedDataSet.push([clickedCenPts[i][2][0] - margins.left, 32, d3.values(clicked[i])[0] ]);
                     added_name = true;
                 }
-    		var text = d3.format(",.1%")(d3.values(clicked[i])[j+1]/100);
+    		var text = d3.format(".2s")(d3.values(clicked[i])[j+1]);
   		var x = clickedCenPts[i][j][0] - margins.left;
   		var y = clickedCenPts[i][j][1] - margins.top;
   		clickedDataSet.push([x, y, text]);
@@ -128,7 +128,7 @@ function addTooltip(clicked, clickedCenPts){
     var padding = 2;
     var rectHeight = fontSize + 2 * padding; //based on font size
 
-    pc.svg.selectAll("rect[id='tooltip']")
+    pc2.svg.selectAll("rect[id='tooltip']")
         	.data(clickedDataSet).enter()
         	.append("rect")
         	.attr("x", function(d) { return d[0] - d[2].length * 5;})
@@ -142,7 +142,7 @@ function addTooltip(clicked, clickedCenPts){
 		.attr("height", rectHeight);
 
     // add text on top of rectangle
-    pc.svg.selectAll("text[id='tooltip']")
+    pc2.svg.selectAll("text[id='tooltip']")
     .data(clickedDataSet).enter()
     		.append("text")
 		.attr("x", function(d) { return d[0];})
@@ -193,7 +193,7 @@ function highlightLineOnClick(mouseClick, drawTooltip){
     	clickedCenPts = clickedData[1];
 
         // highlight clicked line
-        pc.highlight(clicked);
+        pc2.highlight(clicked);
         console.log("Clicked ", clicked);	
 
 	
@@ -220,52 +220,38 @@ var gs2 = graphScroll()
 // Transitions
 previous = 0;
 var gs = graphScroll()
-    .container(d3.select('#container2'))
-    .graph(d3.selectAll('#graph2'))
-    .sections(d3.selectAll('#sections > div'))
+    .container(d3.select('#container3'))
+    .graph(d3.selectAll('#graph3'))
+    .sections(d3.selectAll('#sections3 > div'))
     .on('active', function(i){
      
       var highlight = data.filter(function(d){return d.cand_name!=""});
-      var prev = -1;
  
       switch(i){
         case 0: {
 	  cleanTooltip();
-          pc.unhighlight();
+          pc2.unhighlight();
         };
         break;
         case 1: {
-          highlight = data.filter(function(highlight){return highlight.cand_name=="Average"});
-          pc.highlight(highlight);
+          cleanTooltip();
+          highlight = data.filter(function(highlight){return highlight.cand_name=="Bernie Sanders"});
+          pc2.highlight(highlight);
           var centPtsForTTip = getCentroids(highlight);
 	  addTooltip(highlight, centPtsForTTip);
-          prev = 1;
         };
         break;
         case 2: {
-          pc.unhighlight();
+          pc2.unhighlight;
           cleanTooltip();
-          highlight = data.filter(function(highlight){return highlight.party=="R"});
-          pc.highlight(highlight);
-          prev = 2;
-        };
-        break;
-        case 3: {
-          cleanTooltip();
-          highlight = data.filter(function(highlight){return highlight.party=="D"});
-          pc.highlight(highlight);
-          prev = 3;
-        };
-        break;
-        case 4: {
-          highlight = data.filter(function(highlight){return highlight.cand_name=="Bernie Sanders"});
-          pc.highlight(highlight);
+          highlight = data.filter(function(highlight){return highlight.cand_name=="Hillary Clinton"});
+          pc2.highlight(highlight);
           var centPtsForTTip = getCentroids(highlight);
 	  addTooltip(highlight, centPtsForTTip);
         };
         break;
-        case 5: {
-          pc.unhighlight();
+        case 3: {
+          pc2.unhighlight();
           cleanTooltip();
         };
       }
