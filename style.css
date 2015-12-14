@@ -91,9 +91,11 @@ h1,h3 {
   text-align: center;
 }
 
+/*
 circle {
   fill: #4682b4;
 }
+*/
 
 .mono {
   font-family: monospace;
@@ -103,40 +105,40 @@ circle {
 /* Layout Magic */
 /****************/
 
-#container,#container2 {
+#container0,#container,#container2 {
   position: relative;
   width: 100%;
   overflow: auto;
 }
 
-#sections,#sections2 {
+#sections0,#sections,#sections2 {
   width: 340px;
   float: left;
 }
 
-#sections > div,#sections2 > div {
+#sections0 > div,#sections > div,#sections2 > div {
   background: #fff;
   opacity: .2;
   margin-bottom: 500px;
   margin-top: 120px;
 }
 
-#sections > div.graph-scroll-active,#sections2 > div.graph-scroll-active {
+#sections0 > div.graph-scroll-active,#sections > div.graph-scroll-active,#sections2 > div.graph-scroll-active {
   opacity: 1;
 }
 
-#graph,#graph2 {
+#intro,#graph,#graph2 {
   float: left;
   margin-left: 40px;
 }
 
-#graph.graph-scroll-fixed,#graph2.graph-scroll-fixed {
+#intro.graph-scroll-fixed,#graph.graph-scroll-fixed,#graph2.graph-scroll-fixed {
   position: fixed;
   top: 0;
   margin-left: 380px;
 }
 
-#graph.graph-scroll-below,#graph2.graph-scroll-below {
+#intro.graph-scroll-below,#graph.graph-scroll-below,#graph2.graph-scroll-below {
   position: absolute;
   bottom: 0;
   margin-left: 380px;

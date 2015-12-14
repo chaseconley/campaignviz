@@ -1,0 +1,25 @@
+[
+{"cycle":"2012", "period":"Q1","total":215056},
+{"cycle":"space", "period":"*2","total":0},
+{"cycle":"space", "period":"*3","total":0},
+{"cycle":"2012", "period":"Q2","total":82466919},
+{"cycle":"space", "period":"*4","total":0},
+{"cycle":"space", "period":"*5","total":0},
+{"cycle":"2012", "period":"Q3","total":176473788},
+{"cycle":"space", "period":"*6","total":0},
+{"cycle":"space", "period":"*7","total":0},
+{"cycle":"2012", "period":"Q4","total":280853734},
+{"cycle":"2012", "period":"Jan","total":314733261},
+{"cycle":"2012", "period":"Feb","total":361056610},
+{"cycle":"2012", "period":"Mar","total":418886692},
+{"cycle":"2012", "period":"Apr","total":459529775},
+{"cycle":"2012", "period":"May","total":523596804},
+{"cycle":"2012", "period":"Jun","total":601874972},
+{"cycle":"2012", "period":"Jul","total":690495960},
+{"cycle":"2012", "period":"Aug","total":855702377},
+{"cycle":"2012", "period":"Sept","total":1046483604},
+{"cycle":"2016", "period":"Q1","total":6478974},
+{"cycle":"2016", "period":"Q2","total":127052469},
+{"cycle":"2016", "period":"Q3","total":273078679}
+
+]
