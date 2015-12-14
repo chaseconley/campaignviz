@@ -21,7 +21,7 @@
 
   <title>Campaign Finance</title>
   <link href="style.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="https://syntagmatic.github.io/parallel-coordinates/d3.parcoords.css">
+  <link rel="stylesheet" type="text/css" href="https://syntagmatic.github.io/parallel-coordinates/d3.parcoords.css">  
 </head>
 
 <body>
@@ -123,27 +123,41 @@
   </div>
 
 
-  <h1>Multiple graphs</h1>
+  <h1>Who are these contributions coming from?</h1>
 
 
   <div id='container2'>
     <div id='sections2'>
       <div>
-        <h3>Scroll away</h3>
-        As the bottom of the container approaches the top of the page, the graph is classed with <span class='mono'>graph-scroll-below</span>. A little more css allows the graph slide out of view gracefully:
+        <h3>Contributions by employment status</h3>
+        This chart shows the breakdown of contributions by contributors of variuos employment statuses for each candidate.
+        <br><br>
+        Let's a take a closer look.
+      </div>
 
-        <pre>
-  #graph.graph-scroll-below{
-    position: absolute;
-    bottom: 0px;
-    margin-left: 240px;
-  }
-</pre>
+      <div>
+        Across all candidates, most contributors are employed while half as many are retired and some are unemployed.
+      </div>
+
+      <div>
+        We can see that a very small percent of contributors to Republican candidates are unemployed.
+      </div>
+
+      <div>
+        A higher percent of contributors to Democratic candidates are unemployed.
+      </div>
+
+      <div>
+        Bernie Sanders has by far the highest percent of unemployed contributors.
+      </div>
+
+      <div>
+        Hover over lines in the chart to see each candidate's percentages. Click and drag on an axis to highlight lines in a specified range. Click the axis once to undo selection.
       </div>
 
 
       <div>
-        <h3>Examples</h3>
+        <h3>Bins</h3>
 
 
         <p><a href='http://www.bloomberg.com/graphics/2015-auto-sales/'>Auto Sales</a>
