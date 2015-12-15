@@ -83,12 +83,28 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-h1 {
-  margin: 50px;
+h1, h2 {
+  margin-top: 50px;
 }
 
-h1,h3 {
+h5 {
+  margin-bottom: 20px;
+  color: gray;
+  margin-top: -10px;
+}
+
+.title {
+  margin-top: 50x;
+  
+}
+
+h1,h2,h3, h5 {
   text-align: center;
+}
+
+#conclusion{
+  width: 500px;
+  margin:auto;
 }
 
 /*
@@ -99,6 +115,23 @@ circle {
 
 .mono {
   font-family: monospace;
+}
+
+.scroll-reminder
+{
+    position: fixed;
+    top: 93%;
+    left: 2%;
+    color: gray;
+}
+
+.data-disclaimer
+{
+    position: fixed;
+    top: 95%;
+    right: 2%;
+    color: gray;
+    font-size: 10px;
 }
 
 /****************/

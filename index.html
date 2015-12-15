@@ -25,14 +25,17 @@
   <link rel="stylesheet" type="text/css" href="parcoords_style.css">  
 </head>
 
-<!-- <body onload="location.href='#'"> -->
-<body>
+<body onload="location.href='#'">
+  <div class="scroll-reminder">&#8595 Scroll to Continue </div>
+  <div class="data-disclaimer">All data through September 2015</div>
   <a href="#"></a>
-  <h1>Campaign Finance</h1>
+  <h1 class="title">Money & Politics</h1>
 
 
   <h3>A Visualization of Campaign Contributions for the 2016 Presidential Election</h3>
+  <h5>Laura Brooks & Chase Conley</h5><br>
   <div id='container0'>
+
     <div id='sections0'>
 <!--
       <div>
@@ -44,7 +47,7 @@
       </div>
 -->
     <div>
-        <h3>A Historic Election</h3>
+<h3>A Historic Election</h3>
         The 2016 election is on track to be the most funded presidential election in history. <br><br>
         When compared to the 2012 election...
         
@@ -60,6 +63,7 @@
   </div>
   <div id='container'>
     <div id='sections'>
+
       <div>
         <h3>Donation Inequality</h3>
         Even with so much money in this election, the vast majority has gone to only a few candidates.       
@@ -106,17 +110,17 @@
 
 
       <div>
-        <h3>A Party Divided</h3>
-          Despite Clinton's massive funding, Republican candidates actually have the upper hand.
+          Let's take a look at contributions by party.
       </div>
       <div>
-        When the scale is adjusted to make everything fit ...
+        When the scale is adjusted to make room ...
       </div>
       <div>
         ... and the candidates' funds are added up by party ...
       </div>
       <div>
-        ... more money has actually gone to Republicans than Democrats. 
+        ... more money has actually gone to Republicans than Democrats. With so many Republican candidates in the race, and no clear front runner, the money in their party is spread comparatively thin.<br><br>
+        All of this money has to come from somewhere. Let's take a look at who the contributors are.
       </div>
     </div>
 
@@ -124,14 +128,11 @@
     <div id='graph'>
     </div>
   </div>
-
-
-  <h1>Who are these contributions coming from?</h1>
-
-
+  <br><br><br><br><br><br>
   <div id='container2'>
     <div id='sections2'>
       <div>
+          <h3>Who's Giving the Most?</h3>
        When donors are grouped by their employment status, it's easier to see who supports the candidates.
        <br><br>
        <a href="javascript:void(0)" onclick="if(document.getElementById('spoiler2') .style.display=='none'){document.getElementById('spoiler2') .style.display=''}else{document.getElementById('spoiler2') .style.display='none'}" style="font-size: 11px; color: grey;">A note about FEC reporting requirements</a>
@@ -175,10 +176,11 @@
   </div>
 
 <!--   <h1>What does each contribution look like?</h1> -->
-
+  <br><br><br><br><br><br>
   <div id='container3'>
     <div id='sections3'>
       <div>
+        <h3>Donations of All Sizes</h3>
         Candidates' funding comes from donations both big and small.
       </div>
 
@@ -198,16 +200,23 @@
       </div>
 
       <div>
-        Where candidates get their money says a lot about their campaigns.
+        Hover over lines in the chart to explore the breakdown of each candidate.
       </div>
     </div>
     <div id='graph3' class="parcoords" style="width: 500px; height: 450px;"></div>
+  </div><br><br><br><br><br><br><br>
+  <div id="conclusion">
+    <h3>How Important is Campaign Finance?</h3>
+  Where candidates get their money says a lot about their campaigns. It shows who their supporters are and in many ways reflects the nature of their policies. Political donations give candidates the power to improve their visibility and spread their message. At the same time, a lack of funding can severely limit their political power. As money continues to pour into presidential campaigns, power dynamics may shift. But we can be sure that no matter where the money goes, its effects will not go unnoticed.
+  </div><br><br><br><br><br>
+  <div id="conclusion">
+      <h3>More Information</h3>
+  <b>Data Source: </b> <a href="http://www.fec.gov/disclosurep/pnational.do">FEC Disclosure Reports</a><br>
+  <b>About SuperPacs: </b> <a href="http://abcnews.go.com/Politics/OTUS/super-pac-short-history/story?id=16960267">ABC News</a><br>
+  <b>More Campaign Finance Data: </b> <a href="https://www.opensecrets.org/pres16/">Open Secrets</a>
   </div>
-
-
-
-
-  <h3 id='source'><a href='https://github.com/1wheel/graph-scroll'>contribute/view on github</a>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
   </h3>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> 
   <script src="graph-scroll.js"></script> 

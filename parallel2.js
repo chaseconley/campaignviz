@@ -37,6 +37,19 @@ d3.select("#graph3")
 
 d3.selectAll(".label").attr("transform", "translate(0,-25)");
 
+d3.select("#container3")
+  .select("svg")
+  .append("text")
+  .text("Dollars Received")
+/*
+  .attr("x", 200)
+  .attr("y", 200)
+*/
+  .style("text-anchor", "middle")
+  .style("font-size", "10px")
+  .style("font-weight", "bold")
+  .attr("transform", "translate(10, 237) rotate(-90)");
+
 
 // Add highlight for every line on click
 function getCentroids(data){
