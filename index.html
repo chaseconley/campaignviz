@@ -25,7 +25,9 @@
   <link rel="stylesheet" type="text/css" href="parcoords_style.css">  
 </head>
 
+<!-- <body onload="location.href='#'"> -->
 <body>
+  <a href="#"></a>
   <h1>Campaign Finance</h1>
 
 
@@ -44,13 +46,13 @@
     <div>
         <h3>A Historic Election</h3>
         The 2016 election is on track to be the most funded presidential election in history. <br><br>
-        When the fundraising from this election is compared to that of 2012...
+        When compared to the 2012 election...
         
       </div>
       <div>
         ...the difference is staggering.<br><br>
-        Campaigns have already raised almost double the amount of money compared to this point in the 2012 campaign. Candidates are on track to raise around $2 Billion dollars by election day.<br><br>
-        With all of this money in the election, which candidates are drawing the most donations?
+        Campaigns have already received nearly double the funds raised at this point in the 2012 campaign. Candidates are on track to collectively raise well over $1 billion by election day.<br><br>
+        Let's take a look at where this money is going ...
       </div>
     </div>
     <div id='intro'>
@@ -60,36 +62,36 @@
     <div id='sections'>
       <div>
         <h3>Donation Inequality</h3>
-        Just as massive amounts of money have been poured into this election, massive amounts of money have been poured into Hillary Clinton's campaign.
+        Even with so much money in this election, the vast majority has gone to only a few candidates.       
       </div>
 
 
       <div>
-        In fact, Clinton's campaign received more money from individual donors through the end of September 2015 than the bottom 16 candidates ...
+        In fact, Hillary Clinton's campaign received more money from individual donors through the end of September 2015 than the bottom 16 candidates ...
       </div>
 
 
       <div>
-        ...combined.
+        ... combined.
       </div>
 
 
       <div>
-        Even when you add in other contributions...
+        Even when you add in other contributions from other sources ...
       </div>
 
 
       <div>
-        ...like the candidates' own money<br>
-        (mostly from Donald Trump)...
+        ... like the candidates' personal contributions<br>
+        (mostly from Donald Trump) ...
       </div>
 
 
       <div>
-        ...and money from PACs...<br>
-        <a href="javascript:void(0)" onclick="if(document.getElementById('spoiler') .style.display=='none'){document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}" style="font-size: 9px; color: grey;">Wondering why these numbers are so small?</a>
+        ... and money from PACs ...<br>
+        <a href="javascript:void(0)" onclick="if(document.getElementById('spoiler') .style.display=='none'){document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}" style="font-size: 11px; color: grey;">Wondering why these numbers are so small?</a>
 
-        <div id="spoiler" style="display:none; font-size: 9px;">
+        <div id="spoiler" style="display:none; font-size: 11px;">
           <br>
           These PACs aren't the same a Super PACs. Super PACs do spend large amounts of money on elections, but cannot give directly to candidates. Regular PACs, shown here, have donation restrictions because they can give directly to candidates
         </div>
@@ -97,7 +99,7 @@
 
 
       <div>
-        ...Clinton <i>still</i> has significantly more than all other candidates.<br>
+        ... Clinton <i>still</i> has significantly more than all of the other candidates.<br>
         <br>
         But where does this disparity come from?
       </div>
@@ -108,13 +110,13 @@
           Despite Clinton's massive funding, Republican candidates actually have the upper hand.
       </div>
       <div>
-        When the scale is adjusted to make everything fit...
+        When the scale is adjusted to make everything fit ...
       </div>
       <div>
-        ...and the candidates funds are add up by party...
+        ... and the candidates funds are added up by party ...
       </div>
       <div>
-        ...more money has actually gone to Republicans than Democrats. 
+        ... more money has actually gone to Republicans than Democrats. 
       </div>
     </div>
 
@@ -130,22 +132,26 @@
   <div id='container2'>
     <div id='sections2'>
       <div>
-        <h3>Contributions by employment status</h3>
-        This chart shows the breakdown of contributions by contributors of variuos employment statuses for each candidate.
-        <br><br>
-        Let's a take a closer look.
+       When donors are grouped by their employment status, it's easier to see who supports the candidates.
+       <br><br>
+       <a href="javascript:void(0)" onclick="if(document.getElementById('spoiler2') .style.display=='none'){document.getElementById('spoiler2') .style.display=''}else{document.getElementById('spoiler2') .style.display='none'}" style="font-size: 11px; color: grey;">A note about FEC reporting requirements</a>
+
+        <div id="spoiler2" style="display:none; font-size: 11px;">
+          <br>
+          Contributions must be listed separately on FEC disclosure reports only once the total received from any one person exceeds $200 in an election cycle. 
+        </div>
       </div>
 
       <div>
-        Across all candidates, most contributors are employed while half as many are retired and some are unemployed.
+        Across all candidates, most contributors are employed while a still significant portion are retired. Few contributors are unemployed. 
       </div>
 
       <div>
-        We can see that a very small percent of contributors to Republican candidates are unemployed.
+        A very small percent of contributors to Republican candidates are unemployed ...
       </div>
 
       <div>
-        A higher percent of contributors to Democratic candidates are unemployed.
+        ... whereas this group makes up a higher percentage of the contributors to Democratic candidates.
       </div>
 
       <div>
@@ -153,7 +159,12 @@
       </div>
 
       <div>
-        Hover over lines in the chart to see each candidate's percentages. Click and drag on an axis to highlight lines in a specified range. Click the axis once to undo selection.
+        Hover over lines in the chart to see each candidate's breakdown. <br><br>
+        You can also click and drag on an axis to highlight lines in a specified range. Click the axis once to undo selection.
+      </div>
+      
+      <div>
+        Now that we've seen who the donors are, let's take a look at what each contribution looks like.
       </div>
 
    </div>
@@ -163,24 +174,31 @@
     </div>
   </div>
 
-  <h1>What does each contribution look like?</h1>
+<!--   <h1>What does each contribution look like?</h1> -->
 
   <div id='container3'>
     <div id='sections3'>
       <div>
-        Size of contributions per candidate.
+        Candidates' funding comes from donations both big and small.
       </div>
 
       <div>
-        Candidate with the most contributions under $200.
+        Bernie Sanders has collected the majority of his funds through small contributions ...
       </div>
 
       <div>
-        Candidate with the most contributions over $2000.
+        ... while two candidates who share last names with former presidents have received most of their funding from donations over $2,000,
+        <br><br>
+        including Hillary Clinton ...
+        
+      </div>
+      
+      <div>
+        ... and Jeb Bush.
       </div>
 
       <div>
-        Hover to interact.
+        Where candidates get their money says a lot about their campaigns.
       </div>
     </div>
     <div id='graph3' class="parcoords" style="width: 500px; height: 450px;"></div>

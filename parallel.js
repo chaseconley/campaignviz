@@ -268,6 +268,8 @@ var gs = graphScroll()
           pc.unhighlight();
           cleanTooltip();
         };
+        break;
+        case 6: {} break;
       }
     });
 
