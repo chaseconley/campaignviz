@@ -13,16 +13,14 @@ var pc2 = d3.parcoords()("#graph3")
       if (d.party == 'R') return 'brown';
       else if (d.party == 'D') return 'steelblue';
       else if (d.party == 'both') return 'black';
-      else return 'white';//rgba('0,0,0,0');
+      else return 'white';
   })
   .hideAxis(["cand_name", "party"]) //hides axis for candname, but it stays in dataset
   .margin({top:80,left:0,bottom:50, right:0})
   .render()
   .ticks(5)
   .createAxes()
-  .brushMode("1D-axes")
-  .reorderable();
-  //.interactive();
+  .brushMode("1D-axes");
 
 //add hover event
 d3.select("#graph3")
@@ -124,7 +122,7 @@ function addTooltip(clicked, clickedCenPts){
     };
 
     // add rectangles
-    var fontSize = 14;
+    var fontSize = 12;
     var padding = 2;
     var rectHeight = fontSize + 2 * padding; //based on font size
 

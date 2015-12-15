@@ -558,7 +558,8 @@ pc.createAxes = function() {
       .text(function(d) {
         return d in __.dimensionTitles ? __.dimensionTitles[d] : d;  // dimension display names
       })
-      .on("dblclick", flipAxisAndUpdatePCP)
+      // BELOW: don't allow flip on double click
+      //.on("dblclick", flipAxisAndUpdatePCP)
       .on("wheel", rotateLabels);
 
   flags.axes= true;
@@ -591,7 +592,8 @@ pc.updateAxes = function() {
         "class": "label"
       })
       .text(String)
-      .on("dblclick", flipAxisAndUpdatePCP)
+      //BELOW: don't allow flip axis on double click
+      //.on("dblclick", flipAxisAndUpdatePCP) 
       .on("wheel", rotateLabels);
 
   // Update

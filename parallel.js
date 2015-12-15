@@ -124,7 +124,7 @@ function addTooltip(clicked, clickedCenPts){
     };
 
     // add rectangles
-    var fontSize = 14;
+    var fontSize = 12;
     var padding = 2;
     var rectHeight = fontSize + 2 * padding; //based on font size
 
