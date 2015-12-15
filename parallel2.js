@@ -114,7 +114,7 @@ function addTooltip(clicked, clickedCenPts){
                     clickedDataSet.push([clickedCenPts[i][2][0] - margins.left, 32, d3.values(clicked[i])[0] ]);
                     added_name = true;
                 }
-    		var text = d3.format(".2s")(d3.values(clicked[i])[j+1]);
+    		var text = d3.format("$.2s")(d3.values(clicked[i])[j+1]);
   		var x = clickedCenPts[i][j][0] - margins.left;
   		var y = clickedCenPts[i][j][1] - margins.top;
   		clickedDataSet.push([x, y, text]);
@@ -249,6 +249,15 @@ var gs = graphScroll()
         };
         break;
         case 3: {
+          pc2.unhighlight;
+          cleanTooltip();
+          highlight = data.filter(function(highlight){return highlight.cand_name=="Jeb Bush"});
+          pc2.highlight(highlight);
+          var centPtsForTTip = getCentroids(highlight);
+	  addTooltip(highlight, centPtsForTTip);
+        };
+        break;
+        case 4: {
           pc2.unhighlight();
           cleanTooltip();
         };
