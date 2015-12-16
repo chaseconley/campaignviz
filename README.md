@@ -1,1 +1,2 @@
-# campaignviz
+# Money & Politics
+The goal of this project was to create a visualization that told the story of campaign finance in the 2016 presidential election. Using public FEC fillings from major campaigns, we analyzed the contributions to each candidates, looking at funding source, contributor occupation, donation size, and total donations. We combined all of this data into self-paced, scrolling visualizations that animate to follow a continuous narrative. All visualizations are implemented using D3 and are cross-browser compatible.
